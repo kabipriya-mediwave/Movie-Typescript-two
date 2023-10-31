@@ -70,10 +70,11 @@ const Home: React.FC<IHome> = ({ handleEdit }) => {
         <h1>Home</h1>
 
         <div className="container">
-          <Link to="/add" role="button" className="secondary">
+          <Link to="/add" role="button" className="contrast">
             +
           </Link>
           <button
+            className="refresh"
             disabled={isLoading}
             onClick={() => setRefresh((prev) => !prev)}
           >
@@ -86,12 +87,14 @@ const Home: React.FC<IHome> = ({ handleEdit }) => {
                 <h1>{m.year}</h1>
 
                 <Link to={`/edit/${m.id}`} className="pico-link">
-                  <button onClick={() => handleEdit(m)}>✏️</button>
+                  <button className="outline" onClick={() => handleEdit(m)}>
+                    ✏️
+                  </button>
                 </Link>
                 <button
                   disabled={movieLoadingStates[index]}
                   onClick={() => handleDeleteMovie(m.id, index)}
-                  className="pico-link"
+                  className="outline"
                 >
                   {movieLoadingStates[index] ? <LoadingIcon /> : <>🚮</>}
                 </button>
